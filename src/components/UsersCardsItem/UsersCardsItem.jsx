@@ -1,49 +1,63 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-
-import avatar from '../../assets/img/Boy.png';
 import logo from '../../assets/img/Logo.png';
 import bg from '../../assets/img/bg.png';
+import ellipse from '../../assets/img/avatar-ellipse.png';
+
+import PropTypes from 'prop-types';
+
+import { quantityFollowers } from '../../utils/quantityFollowers';
+
+import { useDispatch } from 'react-redux';
+
 import {
-  Cards,
-  WrapperCards,
+  addQuantityFollow,
+  removeFollowQuantity,
+} from '../../redux/users/operations';
+
+import {
   CardsItem,
   DecorLine,
   Logo,
   BackgroundImg,
-  Avatar,
   Tweets,
   Followers,
   Button,
-} from './UsersCards.styled';
-import { fetchUsers } from '../../redux/users/operations';
-import { selectUsers } from '../../redux/users/selectors';
+  AvatarEllipse,
+  AvatarUrl,
+} from './UsersCardsItem.styled';
 
-export const UsersCards = () => {
-  const users = useSelector(selectUsers);
+export const UsersCardsItem = user => {
   const dispatch = useDispatch();
-  console.log(users);
 
-  useEffect(() => {
-    dispatch(fetchUsers());
-  }, [dispatch]);
+  const handleToggle = () => {
+    !user.follow
+      ? dispatch(addQuantityFollow(user))
+      : dispatch(removeFollowQuantity(user));
+  };
+
+  const { followers, avatar, tweets } = user;
+
   return (
-    <WrapperCards>
-      <Cards>
-        <CardsItem>
-          <Logo src={logo} alt="logo" />
-          <BackgroundImg src={bg} alt="bg" />
-          <DecorLine></DecorLine>
-          <Avatar src={avatar} alt="avatar" />
-          <Tweets>
-            <span>777</span> tweets
-          </Tweets>
-          <Followers>
-            <span>100,500</span> Followers
-          </Followers>
-          <Button type="button">Follow</Button>
-        </CardsItem>
-      </Cards>
-    </WrapperCards>
+    <CardsItem>
+      <Logo src={logo} alt="logo" />
+      <BackgroundImg src={bg} alt="bg" />
+      <DecorLine></DecorLine>
+      <AvatarEllipse ellipse={ellipse}>
+        <AvatarUrl src={avatar} />
+      </AvatarEllipse>
+      <Tweets>
+        <span>{tweets}</span> tweets
+      </Tweets>
+      <Followers>
+        <span>{quantityFollowers(followers)}</span> Followers
+      </Followers>
+
+      <Button onClick={handleToggle} flag={user.follow} type="button">
+        {user.follow ? 'Following' : 'Follow'}
+      </Button>
+    </CardsItem>
   );
+};
+
+UsersCardsItem.propTypes = {
+  user: PropTypes.string.isRequired,
 };

@@ -1,6 +1,10 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 
-import { fetchUsers } from './operations';
+import {
+  fetchUsers,
+  addQuantityFollow,
+  removeFollowQuantity,
+} from './operations';
 
 const pendingReducer = state => {
   state.isLoading = true;
@@ -16,7 +20,7 @@ const fulfilledReducer = state => {
   state.error = null;
 };
 
-const extraActions = [fetchUsers];
+const extraActions = [fetchUsers, addQuantityFollow, removeFollowQuantity];
 const getActions = type => isAnyOf(...extraActions.map(action => action[type]));
 
 const usersSlice = createSlice({
@@ -32,6 +36,24 @@ const usersSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         state.items = action.payload;
+      })
+      .addCase(addQuantityFollow.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+
+        const index = state.items.findIndex(
+          user => user.id === action.payload.id
+        );
+        state.items.splice(index, 1, action.payload);
+      })
+      .addCase(removeFollowQuantity.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+
+        const index = state.items.findIndex(
+          user => user.id === action.payload.id
+        );
+        state.items.splice(index, 1, action.payload);
       })
 
       .addMatcher(getActions('pending'), pendingReducer)

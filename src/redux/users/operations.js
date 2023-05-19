@@ -15,3 +15,49 @@ export const fetchUsers = createAsyncThunk(
     }
   }
 );
+
+export const addQuantityFollow = createAsyncThunk(
+  'users/addQuantityFallow',
+  async (user, thunkAPI) => {
+    try {
+      const response = await axios.put(`/users/${user.id}`, {
+        followers: user.followers + 1,
+        follow: !user.follow,
+      });
+
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const removeFollowQuantity = createAsyncThunk(
+  'users/removeFallow',
+  async (user, thunkAPI) => {
+    try {
+      const response = await axios.put(`/users/${user.id}`, {
+        followers: user.followers - 1,
+        follow: !user.follow,
+      });
+
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const toggleFollowerUser = createAsyncThunk(
+  'tasks/toggleFollow',
+  async (task, thunkAPI) => {
+    try {
+      const response = await axios.put(`/tasks/${task.id}`, {
+        follow: !task.follow,
+      });
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);

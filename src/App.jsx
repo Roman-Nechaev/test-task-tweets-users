@@ -1,17 +1,12 @@
-
-
-
-import './App.css'
-import { UsersCards } from './components/UsersCards/UsersCards'
+import './App.css';
+import { UsersCards } from './components/UsersCards/UsersCardsList';
 
 function App() {
-
-
   return (
     <>
-      <UsersCards/>
+      <UsersCards />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
