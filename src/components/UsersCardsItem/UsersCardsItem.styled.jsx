@@ -9,7 +9,7 @@ export const CardsItem = styled.li`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
   background: linear-gradient(
     114.99deg,
     #471ca9 -0.99%,
