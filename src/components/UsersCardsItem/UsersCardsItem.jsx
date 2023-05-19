@@ -12,7 +12,7 @@ import {
   addQuantityFollow,
   removeFollowQuantity,
 } from '../../redux/users/operations';
-
+import { checkAvatar } from '../../utils/checkAvatar';
 import {
   CardsItem,
   DecorLine,
@@ -42,7 +42,7 @@ export const UsersCardsItem = user => {
       <BackgroundImg src={bg} alt="bg" />
       <DecorLine></DecorLine>
       <AvatarEllipse ellipse={ellipse}>
-        <AvatarUrl src={avatar} />
+        <AvatarUrl src={checkAvatar(avatar)} />
       </AvatarEllipse>
       <Tweets>
         <span>{tweets}</span> tweets

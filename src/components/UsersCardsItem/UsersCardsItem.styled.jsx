@@ -135,6 +135,7 @@ export const AvatarUrl = styled.img`
   width: 64px;
   height: 64px;
   outline: 2px solid #5736a318;
+  background: #5736a3;
 
   border-radius: 50%;
 `;

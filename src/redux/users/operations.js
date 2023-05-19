@@ -47,17 +47,3 @@ export const removeFollowQuantity = createAsyncThunk(
     }
   }
 );
-
-export const toggleFollowerUser = createAsyncThunk(
-  'tasks/toggleFollow',
-  async (task, thunkAPI) => {
-    try {
-      const response = await axios.put(`/tasks/${task.id}`, {
-        follow: !task.follow,
-      });
-      return response.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
-    }
-  }
-);

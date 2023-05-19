@@ -26,7 +26,6 @@ export const Cards = styled.ul`
 
 export const ContainerBtn = styled.div`
   text-align: center;
-  /* background-color: aliceblue; */
 
   padding: 40px;
 `;
