@@ -29,7 +29,7 @@ export const UsersCardsItem = user => {
   const dispatch = useDispatch();
 
   const handleToggle = () => {
-    !user.follow
+    !user.follower
       ? dispatch(addQuantityFollow(user))
       : dispatch(removeFollowQuantity(user));
   };
@@ -51,8 +51,8 @@ export const UsersCardsItem = user => {
         <span>{quantityFollowers(followers)}</span> Followers
       </Followers>
 
-      <Button onClick={handleToggle} flag={user.follow} type="button">
-        {user.follow ? 'Following' : 'Follow'}
+      <Button onClick={handleToggle} flag={user.follower} type="button">
+        {user.follower ? 'Following' : 'Follow'}
       </Button>
     </CardsItem>
   );

@@ -11,10 +11,11 @@ import {
 } from './UsersCardsList.styled';
 
 import { UsersCardsItem } from '../UsersCardsItem/UsersCardsItem';
-import { selectUsers } from '../../redux/users/selectors';
+import { selectUsers, selectVisibleUsers } from '../../redux/selectors';
 
 export const UsersCards = () => {
-  const users = useSelector(selectUsers);
+  // const users = useSelector(selectUsers);
+  const users = useSelector(selectVisibleUsers);
 
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);

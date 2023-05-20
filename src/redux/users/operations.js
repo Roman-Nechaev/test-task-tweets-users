@@ -17,12 +17,12 @@ export const fetchUsers = createAsyncThunk(
 );
 
 export const addQuantityFollow = createAsyncThunk(
-  'users/addQuantityFallow',
+  'users/addQuantityFollower',
   async (user, thunkAPI) => {
     try {
       const response = await axios.put(`/users/${user.id}`, {
         followers: user.followers + 1,
-        follow: !user.follow,
+        follower: !user.follower,
       });
 
       return response.data;
@@ -33,12 +33,12 @@ export const addQuantityFollow = createAsyncThunk(
 );
 
 export const removeFollowQuantity = createAsyncThunk(
-  'users/removeFallow',
+  'users/removeFollower',
   async (user, thunkAPI) => {
     try {
       const response = await axios.put(`/users/${user.id}`, {
         followers: user.followers - 1,
-        follow: !user.follow,
+        follower: !user.follower,
       });
 
       return response.data;
