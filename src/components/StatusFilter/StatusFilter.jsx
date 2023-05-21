@@ -1,9 +1,9 @@
 import { useSelector, useDispatch } from 'react-redux';
 
 import { statusFilters } from '../../redux/filtersUsers/constants';
-
 import { selectStatusFilter, selectUsersCount } from '../../redux/selectors';
 import { setStatusFilter } from '../../redux/filtersUsers/filtersSlice';
+
 import { Container, FilterBtn } from './StatusFilter.styled';
 
 export const StatusFilter = () => {
@@ -12,7 +12,7 @@ export const StatusFilter = () => {
   const { Follow, Followings } = useSelector(selectUsersCount);
 
   const handleFilterChange = filter => dispatch(setStatusFilter(filter));
-  console.log(filter);
+
   return (
     <Container flag={filter === 'all'}>
       <FilterBtn
@@ -20,21 +20,24 @@ export const StatusFilter = () => {
         type="button"
         onClick={() => handleFilterChange(statusFilters.all)}
       >
-        All
+        <span>All</span>
       </FilterBtn>
       <FilterBtn
         selected={filter === statusFilters.follow}
         type="button"
+        disabled={!Follow}
         onClick={() => handleFilterChange(statusFilters.follow)}
       >
-        Follow: <span> {Follow}</span>
+        <span>Follow: {Follow}</span>
       </FilterBtn>
+
       <FilterBtn
         selected={filter === statusFilters.followings}
         type="button"
+        disabled={!Followings}
         onClick={() => handleFilterChange(statusFilters.followings)}
       >
-        Followings: <span>{Followings}</span>
+        <span>Followings: {Followings}</span>
       </FilterBtn>
     </Container>
   );

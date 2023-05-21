@@ -13,19 +13,27 @@ export const BgGradient = styled.div`
 `;
 
 export const BackLink = styled(NavLink)`
+  position: fixed;
   text-decoration: none;
-  color: #ff0a0a;
-  margin-left: 25px;
-  border: 2px solid rgb(255, 255, 255);
-  padding: 5px;
+  top: 80px;
+  left: 20px;
+
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 15px;
   display: inline-flex;
   border-radius: 8px;
-  transition: all 0.4s ease;
+  transition: all 0.5s ease;
+  z-index: 10;
 
+  color: #ffffff;
+  text-shadow: 1px 0 1px #000000, 0 1px 1px #000000, -1px 0 1px #ffffff,
+    0 -1px 1px #000000;
   :hover {
-    color: #234567;
+    color: #000000;
     border: 2px solid #b1dae7;
-    background-color: #b1dae7;
+    background-color: #5cd3a783;
   }
   :hover svg {
     transform: scale(1.2);
@@ -33,7 +41,15 @@ export const BackLink = styled(NavLink)`
 `;
 
 export const AiOutlineArrowLeftSt = styled(AiOutlineArrowLeft)`
-  padding-right: 8px;
+  margin-right: 8px;
   width: 18px;
   height: 18px;
+`;
+export const TitleError = styled.h1`
+  padding-top: 15px;
+  text-align: center;
+  text-decoration-line: underline;
+  color: #000000;
+  text-shadow: 1px 0 1px #ffffff, 0 1px 1px #ffffff, -1px 0 1px #ffffff,
+    0 -1px 1px #ffffff;
 `;

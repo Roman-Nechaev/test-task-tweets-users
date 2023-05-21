@@ -1,9 +1,13 @@
 import { useLocation } from 'react-router-dom';
 import { UsersCards } from '../../components/UsersCards/UsersCardsList';
-import { AiOutlineArrowLeftSt, BackLink } from './Tweets.styled';
+import { AiOutlineArrowLeftSt, BackLink, TitleError } from './Tweets.styled';
 import { useRef } from 'react';
+import { selectError } from '../../redux/selectors';
+import { useSelector } from 'react-redux';
 
 export const Tweets = () => {
+  const error = useSelector(selectError);
+
   const location = useLocation();
   const beckLinkLocationRef = useRef(location.state?.from ?? '/');
   return (
@@ -12,7 +16,13 @@ export const Tweets = () => {
         <AiOutlineArrowLeftSt />
         <span>Go back</span>
       </BackLink>
-      <UsersCards />
+      {!error ? (
+        <UsersCards />
+      ) : (
+        <TitleError>
+          Something went wrong, try reloading the page or try again later.
+        </TitleError>
+      )}
     </>
   );
 };

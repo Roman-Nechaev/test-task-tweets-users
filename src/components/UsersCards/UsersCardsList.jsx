@@ -1,86 +1,67 @@
-import { useEffect, useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
-import debounce from 'lodash.debounce';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { UsersCardsItem } from '../UsersCardsItem/UsersCardsItem';
+import { selectLoading, selectVisibleUsers } from '../../redux/selectors';
+import { fetchUsers } from '../../redux/users/operations';
+import { TitleError } from '../../pages/tweetsPages/Tweets.styled';
 
 import {
-  BtnBack,
   BtnLoadMore,
   Cards,
   ContainerBtn,
   WrapperCards,
 } from './UsersCardsList.styled';
 
-import { UsersCardsItem } from '../UsersCardsItem/UsersCardsItem';
-import { selectUsers, selectVisibleUsers } from '../../redux/selectors';
-
 export const UsersCards = () => {
-  // const users = useSelector(selectUsers);
   const users = useSelector(selectVisibleUsers);
+  const loading = useSelector(selectLoading);
 
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(false);
-  const containerRef = useRef(null);
+  const [visible, setVisible] = useState(3);
 
-  const checkForScrollPosition = () => {
-    const { current } = containerRef;
+  const dispatch = useDispatch();
 
-    if (current) {
-      const { scrollLeft, scrollWidth, clientWidth } = current;
-      setCanScrollLeft(scrollLeft > 0);
-      setCanScrollRight(scrollLeft !== scrollWidth - clientWidth);
+  const checkUsersLength = () => {
+    if (users.length === 0) {
+      return (
+        <TitleError>
+          Im sorry, but you have no followers. Choose a different filter
+          parameter
+        </TitleError>
+      );
     }
+    if (users.length <= 3) return;
+    return (
+      <ContainerBtn>
+        <BtnLoadMore
+          type="button"
+          disabled={loading}
+          onClick={() => onClickPageUp()}
+        >
+          <span> Load More </span>
+        </BtnLoadMore>
+      </ContainerBtn>
+    );
   };
-  const debounceCheckForScrollPosition = debounce(checkForScrollPosition, 200);
-
-  const scrollContainerBy = distance =>
-    containerRef.current?.scrollBy({ left: distance, behavior: 'smooth' });
 
   useEffect(() => {
-    const { current } = containerRef;
-    checkForScrollPosition();
-    current?.addEventListener('scroll', debounceCheckForScrollPosition);
+    dispatch(fetchUsers());
+  }, [dispatch]);
 
-    return () => {
-      current?.removeEventListener('scroll', debounceCheckForScrollPosition);
-      debounceCheckForScrollPosition.cancel();
-    };
-  }, [debounceCheckForScrollPosition]);
+  const onClickPageUp = () => {
+    setVisible(visible => (visible += 3));
+  };
 
   return (
     <>
       <WrapperCards>
-        <Cards ref={containerRef}>
-          {users.map(user => (
+        <Cards>
+          {users.slice(0, visible).map(user => (
             <UsersCardsItem key={user.id} {...user} />
           ))}
         </Cards>
       </WrapperCards>
-      <ContainerBtn>
-        {canScrollLeft && (
-          <BtnBack
-            type="button"
-            disabled={!canScrollLeft}
-            onClick={() => scrollContainerBy(-1200)}
-          >
-            <svg viewBox="0 0 13 10" height="10px" width="15px">
-              <path d="M1,5 L11,5"></path>
-              <polyline points="8 1 12 5 8 9"></polyline>
-            </svg>
-            <span>Back</span>
-          </BtnBack>
-        )}
-        <BtnLoadMore
-          type="button"
-          disabled={!canScrollRight}
-          onClick={() => scrollContainerBy(1200)}
-        >
-          <span> {canScrollRight ? 'Load More' : 'No more'}</span>
-          <svg viewBox="0 0 13 10" height="10px" width="15px">
-            <path d="M1,5 L11,5"></path>
-            <polyline points="8 1 12 5 8 9"></polyline>
-          </svg>
-        </BtnLoadMore>
-      </ContainerBtn>
+      {checkUsersLength()}
     </>
   );
 };

@@ -1,27 +1,32 @@
 import styled from '@emotion/styled';
 
 export const CardsItem = styled.li`
-  margin: 0 auto;
   position: relative;
-  width: 380px;
+  max-width: 380px;
   height: 460px;
-  /* flex-basis: calc((100% - 40px) / 3); */
+  flex-basis: calc((100% - 20px) / 3);
+
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* margin-bottom: 30px; */
+  margin-bottom: 10px;
   background: linear-gradient(
     114.99deg,
     #471ca9 -0.99%,
     #5736a3 54.28%,
     #4b2a99 78.99%
   );
-  /* box-shadow: -2.5777px 6.87386px 20.6216px rgba(0, 0, 0, 0.23); */
+  box-shadow: -2.5777px 6.87386px 20.6216px rgba(0, 0, 0, 0.23);
   border-radius: 20px;
-
+animation: show 2s;.
   flex-shrink: 0;
-  &:not(:last-child) {
-    margin-right: 20px;
+  @keyframes show {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 `;
 

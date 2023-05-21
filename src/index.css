@@ -1,10 +1,14 @@
 @import-normalize;
-
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
 :root {
   margin: 0;
-
+  padding: 0;
   background-color: #fff;
-  line-height: 1;
   text-rendering: optimizeLegibility;
   text-decoration-skip: objects;
   -webkit-text-size-adjust: 100%;
@@ -24,7 +28,6 @@ p {
 
 img {
   display: block;
-  /* max-width: 100%; */
   width: 100%;
   height: auto;
 }

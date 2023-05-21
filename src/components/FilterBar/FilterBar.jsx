@@ -1,4 +1,8 @@
 import { useState } from 'react';
+import { BsFilterCircle } from 'react-icons/bs';
+
+import { DropdownMenu } from '../DropdownMenu/DropdownMenu';
+
 import {
   Container,
   Navbar,
@@ -6,8 +10,7 @@ import {
   NavbarItem,
   NavbarItemBtn,
 } from './FilterBar.styled';
-import { BsFilterCircle } from 'react-icons/bs';
-import { DropdownMenu } from '../DropdownMenu/DropdownMenu';
+
 export const FilterBar = () => {
   const [open, setOpen] = useState(false);
 
@@ -31,10 +34,3 @@ export const FilterBar = () => {
     </Container>
   );
 };
-
-//  <NavbarItem>
-//             <button type="button">Follow</button>
-//           </NavbarItem>
-//           <NavbarItem>
-//             <button type="button">Followings show all</button>
-//           </NavbarItem>

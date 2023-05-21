@@ -1,14 +1,8 @@
 import styled from '@emotion/styled';
 
-export const Container = styled.div`
-  /* display: flex; */
-`;
+export const Container = styled.div``;
 
-export const Navbar = styled.nav`
-  height: 60px;
-
-  padding: 0 16px;
-`;
+export const Navbar = styled.nav``;
 
 export const NavbarList = styled.ul`
   max-width: 100%;
@@ -17,17 +11,17 @@ export const NavbarList = styled.ul`
   justify-content: flex-end;
 `;
 
-export const NavbarItem = styled.ul`
-  width: calc(60px * 0.8);
-
+export const NavbarItem = styled.li`
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 10;
 `;
 
 const setColorBtn = props => {
-  return props.flag ? '#ae00ff' : '#ff006f;';
+  return props.flag ? '#ffffff' : '#00ff1a;';
 };
+
 export const NavbarItemBtn = styled.button`
   background: transparent;
   border: none;
@@ -35,12 +29,17 @@ export const NavbarItemBtn = styled.button`
   height: 40px;
   transition: all 500ms;
   color: ${setColorBtn};
+  background-color: ${props => {
+    if (props.flag) return '#5cd3a783';
+  }};
+  border-radius: 50px;
   cursor: pointer;
   svg {
     width: 100%;
     height: 100%;
   }
   :hover {
-    color: #ae00ff;
+    background-color: #5cd3a783;
+    color: #ffffff;
   }
 `;

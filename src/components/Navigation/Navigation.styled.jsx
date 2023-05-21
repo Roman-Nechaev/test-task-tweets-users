@@ -22,7 +22,7 @@ export const LinkNav = styled(NavLink)`
   }
   &.active {
     color: #ff0000;
-    background-color: #0062ff34;
+    background-color: #5cd3a783;
     backdrop-filter: blur(10px);
   }
 `;

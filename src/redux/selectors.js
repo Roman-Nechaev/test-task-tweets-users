@@ -2,7 +2,7 @@ import { createSelector } from '@reduxjs/toolkit';
 import { statusFilters } from './filtersUsers/constants';
 
 export const selectUsers = state => state.users.items;
-export const selectLoading = state => state.users.loading;
+export const selectLoading = state => state.users.isLoading;
 export const selectError = state => state.users.error;
 export const selectStatusFilter = state => state.filters.status;
 
@@ -19,9 +19,6 @@ export const selectVisibleUsers = createSelector(
     }
   }
 );
-//  all: 'all',
-//   follow: 'follow',
-//   followings: 'followings',
 
 export const selectUsersCount = createSelector([selectUsers], users => {
   return users.reduce(
