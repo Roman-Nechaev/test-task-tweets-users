@@ -7,7 +7,7 @@ import { selectError } from '../../redux/selectors';
 
 import { AiOutlineArrowLeftSt, BackLink, TitleError } from './Tweets.styled';
 
-export const Tweets = () => {
+const Tweets = () => {
   const error = useSelector(selectError);
 
   const location = useLocation();
@@ -28,3 +28,5 @@ export const Tweets = () => {
     </>
   );
 };
+
+export default Tweets;

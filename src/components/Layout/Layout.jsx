@@ -5,7 +5,7 @@ import { AppBar } from '../AppBar/AppBar';
 
 import { Background } from './Layout.styled';
 
-export const Layout = () => {
+const Layout = () => {
   return (
     <Background>
       <AppBar />
@@ -17,3 +17,5 @@ export const Layout = () => {
     </Background>
   );
 };
+
+export default Layout;

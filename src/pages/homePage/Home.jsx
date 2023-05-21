@@ -10,7 +10,7 @@ import {
   WrapperSocial,
 } from './Home.styled';
 
-export const Home = () => {
+const Home = () => {
   return (
     <Container>
       <Title>Welcome, dear friend.</Title>
@@ -48,3 +48,5 @@ export const Home = () => {
     </Container>
   );
 };
+
+export default Home;
