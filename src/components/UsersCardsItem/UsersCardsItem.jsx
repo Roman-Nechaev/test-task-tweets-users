@@ -1,18 +1,18 @@
-import logo from '../../assets/img/Logo.png';
-import bg from '../../assets/img/bg.png';
-import ellipse from '../../assets/img/avatar-ellipse.png';
-
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { quantityFollowers } from '../../utils/quantityFollowers';
-
-import { useDispatch } from 'react-redux';
-
 import {
   addQuantityFollow,
   removeFollowQuantity,
 } from '../../redux/users/operations';
+
 import { checkAvatar } from '../../utils/checkAvatar';
+
+import logo from '../../assets/img/Logo.png';
+import bg from '../../assets/img/bg.png';
+import ellipse from '../../assets/img/avatar-ellipse.png';
+
 import {
   CardsItem,
   DecorLine,

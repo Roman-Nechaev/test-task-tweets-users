@@ -11,17 +11,17 @@ export const LinkNav = styled(NavLink)`
   line-height: 24px;
   cursor: pointer;
   transition: 0.5s;
-  color: #8f2c24;
+  color: #5736a3;
   text-shadow: 1px 0 1px #ffffff, 0 1px 1px #ffffff, -1px 0 1px #ffffff,
     0 -1px 1px #ffffff;
   border-radius: 10px;
 
   :hover,
   :focus {
-    color: #ff0000;
+    color: #ffffff;
   }
   &.active {
-    color: #ff0000;
+    color: #5a5959;
     background-color: #5cd3a783;
     backdrop-filter: blur(10px);
   }

@@ -19,7 +19,7 @@ export const NavbarItem = styled.li`
 `;
 
 const setColorBtn = props => {
-  return props.flag ? '#ffffff' : '#00ff1a;';
+  return !props.flag ? '#ffffff' : ' #5736a3;';
 };
 
 export const NavbarItemBtn = styled.button`
@@ -40,6 +40,6 @@ export const NavbarItemBtn = styled.button`
   }
   :hover {
     background-color: #5cd3a783;
-    color: #ffffff;
+    color: #5736a3;
   }
 `;

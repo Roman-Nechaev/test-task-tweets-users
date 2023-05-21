@@ -24,12 +24,12 @@ export const selectUsersCount = createSelector([selectUsers], users => {
   return users.reduce(
     (count, user) => {
       if (user.follower) {
-        count.Followings += 1;
+        count.followings += 1;
       } else {
-        count.Follow += 1;
+        count.follow += 1;
       }
       return count;
     },
-    { Follow: 0, Followings: 0 }
+    { follow: 0, followings: 0 }
   );
 });

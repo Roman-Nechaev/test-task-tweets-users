@@ -18,8 +18,9 @@ export const CardsItem = styled.li`
   );
   box-shadow: -2.5777px 6.87386px 20.6216px rgba(0, 0, 0, 0.23);
   border-radius: 20px;
-animation: show 2s;.
+
   flex-shrink: 0;
+  animation: show 2s;
   @keyframes show {
     from {
       opacity: 0;

@@ -9,7 +9,7 @@ import { Container, FilterBtn } from './StatusFilter.styled';
 export const StatusFilter = () => {
   const dispatch = useDispatch();
   const filter = useSelector(selectStatusFilter);
-  const { Follow, Followings } = useSelector(selectUsersCount);
+  const { follow, followings } = useSelector(selectUsersCount);
 
   const handleFilterChange = filter => dispatch(setStatusFilter(filter));
 
@@ -25,19 +25,19 @@ export const StatusFilter = () => {
       <FilterBtn
         selected={filter === statusFilters.follow}
         type="button"
-        disabled={!Follow}
+        disabled={!follow}
         onClick={() => handleFilterChange(statusFilters.follow)}
       >
-        <span>Follow: {Follow}</span>
+        <span>Follow: {follow}</span>
       </FilterBtn>
 
       <FilterBtn
         selected={filter === statusFilters.followings}
         type="button"
-        disabled={!Followings}
+        disabled={!followings}
         onClick={() => handleFilterChange(statusFilters.followings)}
       >
-        <span>Followings: {Followings}</span>
+        <span>Followings: {followings}</span>
       </FilterBtn>
     </Container>
   );

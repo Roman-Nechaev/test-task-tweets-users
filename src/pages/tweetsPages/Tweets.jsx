@@ -1,9 +1,11 @@
-import { useLocation } from 'react-router-dom';
-import { UsersCards } from '../../components/UsersCards/UsersCardsList';
-import { AiOutlineArrowLeftSt, BackLink, TitleError } from './Tweets.styled';
 import { useRef } from 'react';
-import { selectError } from '../../redux/selectors';
 import { useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
+
+import { UsersCards } from '../../components/UsersCards/UsersCardsList';
+import { selectError } from '../../redux/selectors';
+
+import { AiOutlineArrowLeftSt, BackLink, TitleError } from './Tweets.styled';
 
 export const Tweets = () => {
   const error = useSelector(selectError);

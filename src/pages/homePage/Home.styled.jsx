@@ -8,7 +8,7 @@ import {
 
 export const Container = styled.div`
   z-index: 4;
-  padding-top: 15px;
+  padding-top: 80px;
   padding-bottom: 15px;
   width: 100%;
   min-height: 500px;
@@ -43,11 +43,11 @@ export const Text = styled.p`
     0 -1px 1px #ffffff;
 `;
 
-/////
-
 export const WrapperSocial = styled.ul`
   display: flex;
   justify-content: center;
+
+  align-self: flex-end;
 `;
 
 export const SocialLi = styled.li`
