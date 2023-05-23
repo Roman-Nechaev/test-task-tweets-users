@@ -42,7 +42,7 @@ export const UsersCardsItem = user => {
       <BackgroundImg src={bg} alt="bg" />
       <DecorLine></DecorLine>
       <AvatarEllipse ellipse={ellipse}>
-        <AvatarUrl src={checkAvatar(avatar)} />
+        <AvatarUrl src={checkAvatar(avatar)} alt="avatar" />
       </AvatarEllipse>
       <Tweets>
         <span>{tweets}</span> tweets

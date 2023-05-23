@@ -12,6 +12,7 @@ const Tweets = () => {
 
   const location = useLocation();
   const beckLinkLocationRef = useRef(location.state?.from ?? '/');
+
   return (
     <>
       <BackLink to={beckLinkLocationRef.current}>
